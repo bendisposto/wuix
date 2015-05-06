@@ -31,7 +31,11 @@
                                    :source-map true
                                    :source-map-timestamp true
                                    :cache-analysis true }}
-                       
+                       {:id "ctrl"
+                        :source-paths ["ctrl"]
+                        :compiler {:output-to "resources/public/ctrl.js"
+                                   :optimizations :simple
+                                   :target :nodejs}}
                        {:id "min"
                         :source-paths ["src"]
                         :compiler {:output-to "resources/public/js/compiled/wuix.js"
