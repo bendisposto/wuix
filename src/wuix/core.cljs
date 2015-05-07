@@ -74,30 +74,6 @@
     [split-box :margin "0px" :panel-1 c1 :panel-2 c2]))
 
 
-#_(defn pane-header [pages]
-    (let [tabs (rf/subscribe [:views pages])
-          current (r/atom :h1)]
-      [c/border :border "1px solid lightgray"
-       :child [c/box :size "30px"
-               :child
-               (when @tabs [c/horizontal-pill-tabs
-                            :model current
-                            :on-change #(rf/dispatch [:tab-change %])
-                            :tabs @tabs])]]))
-
-#_(defn content [page]
-    (let [content (rf/subscribe [:content page])]
-      [c/box :size "auto" :child @content]))
-
-#_(defn render-pane-content [layout]
-    (println :debug layout)
-    (let [pages (rf/subscribe [:page layout])]
-      (println :d2 @pages)
-      [c/v-box :size "auto"
-       :children [
-                  (pane-header (:headers @pages))
-                  (content (or (:focus @pages) (first (:headers @pages)) ))]]))
-
 (defn render-single-pane [pane-name]
   (let [pages (rf/subscribe [:page pane-name])
         views (rf/subscribe [:views (:headers @pages)])
