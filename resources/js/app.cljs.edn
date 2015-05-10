@@ -1,2 +1,0 @@
-{:require  [wuix.app]
- :init-fns [wuix.app/init]}
